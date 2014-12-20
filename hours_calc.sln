@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.22310.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hours_calc", "hours_calc.vcxproj", "{9F5A5C99-08AF-4978-A7CC-50E89C15D34B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9F5A5C99-08AF-4978-A7CC-50E89C15D34B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{9F5A5C99-08AF-4978-A7CC-50E89C15D34B}.Debug|Win32.Build.0 = Debug|Win32
+		{9F5A5C99-08AF-4978-A7CC-50E89C15D34B}.Release|Win32.ActiveCfg = Release|Win32
+		{9F5A5C99-08AF-4978-A7CC-50E89C15D34B}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
