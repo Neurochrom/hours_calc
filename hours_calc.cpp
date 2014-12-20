@@ -488,9 +488,9 @@ int main(int argc, char* argv[])
    oss2<<"Person\tDay\tHours\n";
    for(DMap::iterator it = dayMinutes.begin(); it!=dayMinutes.end(); ++it)
    {
-      oss2 <<it->first.first<<"\t" << it->first.second << "\t" <<fixed<<setprecision(2)<< it->second / 60.0 << std::endl;
+      oss2 <<it->first.first<<"\t" << it->first.second << "\t" << fixed << setprecision(9)<< it->second / 60.0 << std::endl;
    }
-   //system("PAUSE");
+   //system("PAUSE");  // does not help
 
    return 0;
 }
