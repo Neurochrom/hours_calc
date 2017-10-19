@@ -62,13 +62,17 @@ sterile: sterile_debug sterile_release
 clean_debug:
 	rm -rf $(DBGOBJDIR)/*.o
 	rm -rf $(DBGOBJDIR)/*.d
+	rmdir $(DBGOBJDIR)
 
 clean_release:
 	rm -rf $(RELOBJDIR)/*.o
 	rm -rf $(RELOBJDIR)/*.d
+	rmdir $(RELOBJDIR)
 
 sterile_debug: clean_debug
 	rm -f $(BINDIR)/$(DBGAPPNAME)
+	#rmdir --ignore-fail-on-non-empty $(BINDIR)  # while BINDIR is . it makes no sense
 
 sterile_release: clean_release
 	rm -f $(BINDIR)/$(RELAPPNAME)
+	#rmdir --ignore-fail-on-non-empty $(BINDIR)  # while BINDIR is . it makes no sense
