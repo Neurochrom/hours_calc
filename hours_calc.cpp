@@ -148,7 +148,7 @@ bool parseHourMin(HourMin* result, const std::string& s)
    if (ss.size() != 2)
       return false;
    unsigned h,m;
-   try 
+   try
    {
       h = std::stoi(ss[0]);
       m = std::stoi(ss[1]);
