@@ -3,8 +3,8 @@ SRCDIR  := .
 
 DBGOBJDIR  := obj-debug
 RELOBJDIR  := obj-release
-DBGAPPNAME := hours_calc-debug_.exe
-RELAPPNAME := hours_calc_.exe
+DBGAPPNAME := hours_calc-debug
+RELAPPNAME := hours_calc
 
 $(shell mkdir -p $(DBGOBJDIR))
 $(shell mkdir -p $(RELOBJDIR))
@@ -33,7 +33,7 @@ all: debug release
 
 debug: $(BINDIR)/$(DBGAPPNAME)
 
-release: $(RELOBJECTS) $(RELDEPS)
+release: $(BINDIR)/$(RELAPPNAME)
 
 $(BINDIR)/$(DBGAPPNAME): $(DBGOBJECTS) $(DBGDEPS)
 	$(LD) $(DBGLDFLAGS) $(INCLUDE) $(DBGOBJECTS) -o $(BINDIR)/$(DBGAPPNAME) $(LIBPATH) $(LIBS)
@@ -55,10 +55,6 @@ $(RELOBJDIR)/%.o: $(SRCDIR)/%.cpp
 
 $(RELOBJDIR)/%.d: $(SRCDIR)/%.cpp
 	$(CXX) $(RELDEPFLAGS) $(subst .d,.o,$@) $(INCLUDE) $< -o $@
-
-
-#$(DBGOBJDIR)/%.d: ;
-#.PRECIOUS: $(DBGOBJDIR)/%.d
 
 clean: clean_debug clean_release
 sterile: sterile_debug sterile_release
