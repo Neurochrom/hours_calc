@@ -328,6 +328,8 @@ int main(int argc, char* argv[])
                curYearMon = YearMon(year, mon);
                curDay = day;
                curDayStr = line;
+               while (isspace(curDayStr.back()))
+                  curDayStr.pop_back();
 
                if (year < 2010)
                   break;
