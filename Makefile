@@ -20,14 +20,20 @@ INCLUDE :=
 LIBPATH :=
 LIBS    :=
 
-DBGCXXFLAGS := -Wall -ggdb --std=c++11 -D_DEBUG
-RELCXXFLAGS := -Wall -o2 --std=c++11
+DBGCXXFLAGS := -Wall -ggdb -std=c++11 -D_DEBUG
+RELCXXFLAGS := -Wall -o2 -std=c++11
 CXX         := g++
-DBGLDFLAGS  := -Wall -ggdb --std=c++11 -D_DEBUG
-RELLDFLAGS  := -Wall -o2 --std=c++11
+DBGLDFLAGS  := -Wall -ggdb -std=c++11 -D_DEBUG
+RELLDFLAGS  := -Wall -o2 -std=c++11
 LD          := g++
-DBGDEPFLAGS := -D_DEBUG -MM -MQ
-RELDEPFLAGS := -MM -MQ
+DBGDEPFLAGS := -std=c++11 -D_DEBUG -MM -MQ
+RELDEPFLAGS := -std=c++11 -MM -MQ
+
+# A trick form:
+# https://blog.melski.net/2010/11/30/makefile-hacks-print-the-value-of-any-variable/
+# Input make print-VARIABLE_NAME to see the value of a variable.
+print-%:
+	@echo '$*=$($*)'
 
 all: debug release
 
