@@ -420,7 +420,7 @@ int main(int argc, char* argv[])
                if ((ss[i][0] == '[') && (ss[i][ ss[i].size() - 1 ] == ']'))
                   typeOfWork = upperCase( ss[i].substr(1, ss[i].size() - 2) );
             }
-            vector<string> typesOfWork = splitIntoTokens(typeOfWork, "\\/");
+            vector<string> typesOfWork = splitIntoTokens(typeOfWork, "\\/,");
             if (typesOfWork.empty())
                typesOfWork.push_back("UNASSIGNED");
             typeOfWork.clear();
