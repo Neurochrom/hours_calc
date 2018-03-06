@@ -89,6 +89,17 @@ std::string lowerCase(const std::string& s)
    return r;
 }
 
+/// @todo handle UTF-8
+std::string upperCase(const std::string& s)
+{
+    std::string r = s;
+    for (size_t i = 0; i < r.size(); ++i)
+        if ((r[i] >= 'a') && (r[i] <= 'z'))
+            r[i] = (char)(r[i] - 'a' + 'A');
+    return r;
+}
+
+
 std::string expandStr(const std::string& str, size_t size)
 {
    size_t strLen = str.length();
@@ -355,7 +366,7 @@ int main(int argc, char* argv[])
             // Remove the recommended but optional : behind the name
             if (person[person.size() - 1] == ':')
                person = person.substr(0, person.size() - 1);
-            person = lowerCase(person);
+            person = upperCase(person);
 
             vector<HourMin> hms;
             size_t i = 1;
@@ -407,7 +418,7 @@ int main(int argc, char* argv[])
             if (i != ss.size())
             {
                if ((ss[i][0] == '[') && (ss[i][ ss[i].size() - 1 ] == ']'))
-                  typeOfWork = lowerCase( ss[i].substr(1, ss[i].size() - 2) );
+                  typeOfWork = upperCase( ss[i].substr(1, ss[i].size() - 2) );
             }
             vector<string> typesOfWork = splitIntoTokens(typeOfWork, "\\/");
             if (typesOfWork.empty())
@@ -468,7 +479,7 @@ int main(int argc, char* argv[])
       /// For all people combined.
       {
          oss << endl;
-         oss << "all crew combined" << ":" << endl;
+         oss << "The whole crew combined" << ":" << endl;
 
          // All months per person.
          for (auto pmi = minutesMap.statsForWorkTypesForAll.s.begin(); pmi != minutesMap.statsForWorkTypesForAll.s.end(); ++pmi)
