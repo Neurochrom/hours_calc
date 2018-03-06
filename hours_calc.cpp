@@ -409,10 +409,12 @@ int main(int argc, char* argv[])
                if ((ss[i][0] == '[') && (ss[i][ ss[i].size() - 1 ] == ']'))
                   typeOfWork = lowerCase( ss[i].substr(1, ss[i].size() - 2) );
             }
-            vector<string> typesOfWork = splitIntoTokens(typeOfWork, "\\/ ");
+            vector<string> typesOfWork = splitIntoTokens(typeOfWork, "\\/");
             if (typesOfWork.empty())
                typesOfWork.push_back("UNASSIGNED");
             typeOfWork.clear();
+
+#ifdef DO_NOT_SPLIT_TYPES_OF_WORK
             sort(typesOfWork.begin(), typesOfWork.end());
             for (size_t k = 0; k < typesOfWork.size(); ++k)
             {
@@ -420,13 +422,17 @@ int main(int argc, char* argv[])
                   typeOfWork.push_back('/');
                typeOfWork += typesOfWork[k];
             }
-
             minutesMap.update(person, curYearMon, typeOfWork, totalMinutesForLine);
-
-            if(dayMinutes.find(make_pair(person, curDayStr))== dayMinutes.end())
-               dayMinutes[make_pair(person, curDayStr)]=totalMinutesForLine;
+#else
+            double iTypesOfWorkSize;
+            iTypesOfWorkSize = 1.0 / typesOfWork.size();
+            for (auto& tow : typesOfWork)
+                minutesMap.update(person, curYearMon, tow, unsigned(totalMinutesForLine * iTypesOfWorkSize));
+#endif
+            if (dayMinutes.find(make_pair(person, curDayStr)) == dayMinutes.end())
+               dayMinutes[make_pair(person, curDayStr)] = totalMinutesForLine;
             else
-               dayMinutes[make_pair(person, curDayStr)]+=totalMinutesForLine;
+               dayMinutes[make_pair(person, curDayStr)] += totalMinutesForLine;
          }
       }
 
