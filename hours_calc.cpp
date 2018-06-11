@@ -300,7 +300,7 @@ int main(int argc, char* argv[])
       YearMon curYearMon;
       unsigned curDay = 0;
       string curDayStr;
-      while (!ifs.eof())
+      while (!ifs.eof() && ifs.peek() != std::ifstream::traits_type::eof())
       {
          string line = loadStrLine(ifs);
          ++numLines;
